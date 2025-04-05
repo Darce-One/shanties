@@ -68,7 +68,10 @@ def select_score_for_analysis(score):
             instruments = part.getInstruments(returnDefault=True)
             for instr in instruments:
                 # Check if instrumentName exists and is a string
-                if instr.instrumentName is not None and "voice" in instr.instrumentName.lower():
+                if (
+                    instr.instrumentName is not None
+                    and "voice" in instr.instrumentName.lower()
+                ):
                     voice_part = part
                     break
                 # You can also check for Vocalist type explicitly

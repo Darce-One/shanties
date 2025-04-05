@@ -89,3 +89,14 @@ Can we classify shanty type from these features?
   Measure changes in note density across the score to detect fluctuations between zones of activity.
 
 ---
+
+# Running the scripts:
+Set up the virtual environment of your choice, with python version 3.10 installed.
+Once activated, run
+```bash
+pip install -r requirements.txt
+```
+You can then run the main script on your database of midi files. You do it like so:
+```bash
+python src/main.py <dataset_folder>
+```

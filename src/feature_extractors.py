@@ -12,6 +12,7 @@ import math
 import statistics
 import music21
 
+
 # ============================================================
 # Base FeatureExtractor class
 # ============================================================
@@ -21,6 +22,7 @@ class FeatureExtractor(ABC):
 
     Child classes must implement the extract() method.
     """
+
     @abstractmethod
     def extract(self, score):
         """
@@ -39,15 +41,17 @@ class FeatureExtractor(ABC):
 # Pitch and Interval Features
 # ============================================================
 
+
 class PitchRangeExtractor(FeatureExtractor):
     """
     Computes the pitch range as the difference between the highest and lowest pitches.
     Returns the range in MIDI numbers.
     """
+
     def extract(self, score):
         pitch_values = []
         for n in score.recurse().notes:
-            if hasattr(n, 'pitch'):
+            if hasattr(n, "pitch"):
                 pitch_values.append(n.pitch.midi)
         if not pitch_values:
             return 0.0
@@ -59,10 +63,11 @@ class AverageIntervalExtractor(FeatureExtractor):
     """
     Calculates the average absolute interval (in semitones) between consecutive notes.
     """
+
     def extract(self, score):
         pitches = []
         for n in score.recurse().notes:
-            if hasattr(n, 'pitch'):
+            if hasattr(n, "pitch"):
                 pitches.append(n.pitch.midi)
         if len(pitches) < 2:
             return 0.0
@@ -75,10 +80,11 @@ class IntervalComplexityExtractor(FeatureExtractor):
     """
     Quantifies the diversity of intervals using Shannon entropy (in bits).
     """
+
     def extract(self, score):
         pitches = []
         for n in score.recurse().notes:
-            if hasattr(n, 'pitch'):
+            if hasattr(n, "pitch"):
                 pitches.append(n.pitch.midi)
         if len(pitches) < 2:
             return 0.0
@@ -102,10 +108,11 @@ class LeapFrequencyExtractor(FeatureExtractor):
     Computes the leap frequency: the proportion of intervals that are larger than a step (defined here as >2 semitones).
     This feature is inherently a ratio between 0 and 1.
     """
+
     def extract(self, score):
         pitches = []
         for n in score.recurse().notes:
-            if hasattr(n, 'pitch'):
+            if hasattr(n, "pitch"):
                 pitches.append(n.pitch.midi)
         if len(pitches) < 2:
             return 0.0
@@ -119,10 +126,11 @@ class ContourDirectionalityExtractor(FeatureExtractor):
     Measures directional movement by returning the ratio of upward intervals.
     This ratio is inherently between 0 and 1.
     """
+
     def extract(self, score):
         pitches = []
         for n in score.recurse().notes:
-            if hasattr(n, 'pitch'):
+            if hasattr(n, "pitch"):
                 pitches.append(n.pitch.midi)
         if len(pitches) < 2:
             return 0.0
@@ -142,10 +150,11 @@ class MelodicContourComplexityExtractor(FeatureExtractor):
     Computes the complexity of the melodic contour by counting the number of directional changes.
     The value is normalized by the total number of intervals minus one (the maximum possible number of changes).
     """
+
     def extract(self, score):
         pitches = []
         for n in score.recurse().notes:
-            if hasattr(n, 'pitch'):
+            if hasattr(n, "pitch"):
                 pitches.append(n.pitch.midi)
         if len(pitches) < 3:
             return 0.0
@@ -173,16 +182,17 @@ class MelodicContourComplexityExtractor(FeatureExtractor):
         return normalized_changes
 
 
-
 # ============================================================
 # Rhythmic and Duration Features
 # ============================================================
+
 
 class AverageNoteDurationExtractor(FeatureExtractor):
     """
     Computes the average note duration (using quarterLength values)
     and returns it in quarter length units.
     """
+
     def extract(self, score):
         durations = []
         for n in score.recurse().notes:
@@ -197,6 +207,7 @@ class RhythmComplexityExtractor(FeatureExtractor):
     """
     Measures the complexity of rhythms by computing the entropy of note durations (in bits).
     """
+
     def extract(self, score):
         durations = [n.quarterLength for n in score.recurse().notes]
         if not durations:
@@ -218,6 +229,7 @@ class SyncopationExtractor(FeatureExtractor):
     Here we assume the downbeats occur at integer offsets (for example, in 4/4 time).
     Returns the ratio of syncopated note onsets to total note onsets.
     """
+
     def extract(self, score):
         note_count = 0
         syncopated = 0
@@ -236,6 +248,7 @@ class NoteCountPerBarExtractor(FeatureExtractor):
     """
     Calculates the average number of note onsets per measure.
     """
+
     def extract(self, score):
         measures = score.getElementsByClass(music21.stream.Measure)
         note_counts = []
@@ -253,9 +266,12 @@ class NoteCountPerBarVariabilityExtractor(FeatureExtractor):
     Computes the variance of the note counts per measure across the score.
     Returns the raw variance.
     """
+
     def extract(self, score):
         measures = score.getElementsByClass(music21.stream.Measure)
-        note_counts = [len(list(m.flatten().notes)) for m in measures if m.flatten().notes]
+        note_counts = [
+            len(list(m.flatten().notes)) for m in measures if m.flatten().notes
+        ]
         if len(note_counts) < 2:
             return 0.0
         var_notes = statistics.variance(note_counts)
@@ -267,6 +283,7 @@ class RestFrequencyExtractor(FeatureExtractor):
     Computes the frequency of rests relative to notes.
     Returns the ratio of the number of rests to the total count of rests and notes.
     """
+
     def extract(self, score):
         note_count = 0
         rest_count = 0
@@ -286,11 +303,13 @@ class RestFrequencyExtractor(FeatureExtractor):
 # Structural and Statistical Complexity Features
 # ============================================================
 
+
 class ScoreLengthInBarsExtractor(FeatureExtractor):
     """
     Counts the total number of measures (bars) in the score.
     Returns the raw count of bars.
     """
+
     def extract(self, score):
         measures = score.getElementsByClass(music21.stream.Measure)
         bar_count = len(measures)
@@ -304,12 +323,15 @@ class MelodicPatternRepetitionExtractor(FeatureExtractor):
     and counts how often n-grams (with n=3) are repeated. It returns a ratio of repetition,
     which is inherently between 0 and 1.
     """
+
     def extract(self, score):
-        pitches = [str(n.pitch.midi) for n in score.recurse().notes if hasattr(n, 'pitch')]
+        pitches = [
+            str(n.pitch.midi) for n in score.recurse().notes if hasattr(n, "pitch")
+        ]
         n = 3
         if len(pitches) < n:
             return 0.0
-        ngrams = [" ".join(pitches[i:i+n]) for i in range(len(pitches)-n+1)]
+        ngrams = [" ".join(pitches[i : i + n]) for i in range(len(pitches) - n + 1)]
         unique = set(ngrams)
         total = len(ngrams)
         repetition = 1 - (len(unique) / total)
@@ -322,12 +344,13 @@ class RhythmicPatternRepetitionExtractor(FeatureExtractor):
     It extracts a sequence of note durations, creates n-grams (n=3),
     and returns a repetition ratio (between 0 and 1).
     """
+
     def extract(self, score):
         durations = [str(n.quarterLength) for n in score.recurse().notes]
         n = 3
         if len(durations) < n:
             return 0.0
-        ngrams = [" ".join(durations[i:i+n]) for i in range(len(durations)-n+1)]
+        ngrams = [" ".join(durations[i : i + n]) for i in range(len(durations) - n + 1)]
         unique = set(ngrams)
         total = len(ngrams)
         repetition = 1 - (len(unique) / total)
@@ -338,8 +361,9 @@ class EntropyOfPitchSequenceExtractor(FeatureExtractor):
     """
     Uses Shannon entropy to measure unpredictability in the sequence of pitches (in bits).
     """
+
     def extract(self, score):
-        pitches = [n.pitch.midi for n in score.recurse().notes if hasattr(n, 'pitch')]
+        pitches = [n.pitch.midi for n in score.recurse().notes if hasattr(n, "pitch")]
         if not pitches:
             return 0.0
         unique = {}
@@ -358,6 +382,7 @@ class VarianceInNoteDensityExtractor(FeatureExtractor):
     Measures changes in note density (number of note onsets) across measures
     by returning the variance of note counts per measure.
     """
+
     def extract(self, score):
         measures = score.getElementsByClass(music21.stream.Measure)
         counts = []
@@ -411,7 +436,10 @@ if __name__ == "__main__":
         for part in score.parts:
             instruments = part.getInstruments(returnDefault=True)
             for instr in instruments:
-                if isinstance(instr, music21.instrument.Vocalist) or "voice" in instr.instrumentName.lower():
+                if (
+                    isinstance(instr, music21.instrument.Vocalist)
+                    or "voice" in instr.instrumentName.lower()
+                ):
                     voice_part = part
                     break
             if voice_part:

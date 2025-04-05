@@ -1,0 +1,2 @@
+# for python 3.10
+music21==9.5.0

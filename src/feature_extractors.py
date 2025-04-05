@@ -164,7 +164,14 @@ class MelodicContourComplexityExtractor(FeatureExtractor):
         for a, b in zip(filtered[:-1], filtered[1:]):
             if a != b:
                 changes += 1
-        return changes
+        # Normalize changes by the maximum possible changes (total intervals - 1)
+        total_intervals = len(pitches) - 1
+        if total_intervals <= 0:
+            return 0.0
+
+        normalized_changes = changes / total_intervals
+        return normalized_changes
+
 
 
 # ============================================================
@@ -233,7 +240,7 @@ class NoteCountPerBarExtractor(FeatureExtractor):
         measures = score.getElementsByClass(music21.stream.Measure)
         note_counts = []
         for m in measures:
-            count = len(list(m.flat.notes))
+            count = len(list(m.flatten().notes))
             note_counts.append(count)
         if not note_counts:
             return 0.0
@@ -248,7 +255,7 @@ class NoteCountPerBarVariabilityExtractor(FeatureExtractor):
     """
     def extract(self, score):
         measures = score.getElementsByClass(music21.stream.Measure)
-        note_counts = [len(list(m.flat.notes)) for m in measures if m.flat.notes]
+        note_counts = [len(list(m.flatten().notes)) for m in measures if m.flatten().notes]
         if len(note_counts) < 2:
             return 0.0
         var_notes = statistics.variance(note_counts)
@@ -355,7 +362,7 @@ class VarianceInNoteDensityExtractor(FeatureExtractor):
         measures = score.getElementsByClass(music21.stream.Measure)
         counts = []
         for m in measures:
-            counts.append(len(list(m.flat.notes)))
+            counts.append(len(list(m.flatten().notes)))
         if len(counts) < 2:
             return 0.0
         var_value = statistics.variance(counts)
@@ -386,11 +393,36 @@ def extract_all_features(score, extractors):
 
 if __name__ == "__main__":
     import sys
+    import music21
+
     if len(sys.argv) < 2:
         print("Usage: python feature_extractors.py <path_to_midi_file>")
         sys.exit(1)
     midi_path = sys.argv[1]
     score = music21.converter.parse(midi_path)
+
+    # Print the score structure (for debugging)
+    score.show("text")
+    print("\n")
+
+    # Check if the score has parts.
+    if hasattr(score, "parts") and score.parts:
+        voice_part = None
+        for part in score.parts:
+            instruments = part.getInstruments(returnDefault=True)
+            for instr in instruments:
+                if isinstance(instr, music21.instrument.Vocalist) or "voice" in instr.instrumentName.lower():
+                    voice_part = part
+                    break
+            if voice_part:
+                break
+        if voice_part:
+            score_for_analysis = voice_part
+        else:
+            score_for_analysis = score.parts[0]
+    else:
+        score_for_analysis = score
+
     extractors = [
         PitchRangeExtractor(),
         AverageIntervalExtractor(),
@@ -410,6 +442,6 @@ if __name__ == "__main__":
         EntropyOfPitchSequenceExtractor(),
         VarianceInNoteDensityExtractor(),
     ]
-    features = extract_all_features(score, extractors)
+    features = extract_all_features(score_for_analysis, extractors)
     for feature_name, value in features.items():
         print(f"{feature_name}: {value}")

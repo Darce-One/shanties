@@ -1,0 +1,473 @@
+data
+├── all_songs
+│   ├── across-the-western-ocean
+│   │   ├── WSTOCEAN.MID
+│   │   ├── lyrics.txt
+│   │   └── metadata.json
+│   ├── adieu-madras
+│   │   ├── lyrics.txt
+│   │   └── metadata.json
+│   ├── admiral-benbow
+│   │   ├── ADBENBOW.MID
+│   │   ├── lyrics.txt
+│   │   └── metadata.json
+│   ├── all-for-me-grog
+│   │   ├── HEREGROG.MID
+│   │   ├── lyrics.txt
+│   │   └── metadata.json
+│   ├── andrew-rose
+│   │   ├── ANDRROSS.MID
+│   │   ├── lyrics.txt
+│   │   └── metadata.json
+│   ├── as-i-went-a-walking-down-ratcliffe-highway
+│   │   ├── RATCLIF.MID
+│   │   ├── lyrics.txt
+│   │   └── metadata.json
+│   ├── away-rio
+│   │   ├── RIOGRAN.MID
+│   │   ├── lyrics.txt
+│   │   └── metadata.json
+│   ├── banks-of-the-sacramento
+│   │   ├── CAMPTWN.MID
+│   │   ├── lyrics.txt
+│   │   └── metadata.json
+│   ├── blood-red-roses
+│   │   ├── BLOODRED.MID
+│   │   ├── lyrics.txt
+│   │   └── metadata.json
+│   ├── blow-boys-blow
+│   │   ├── BLOWBOYS.MID
+│   │   ├── lyrics.txt
+│   │   └── metadata.json
+│   ├── blow-ye-winds-in-the-morning
+│   │   ├── BLOWYE.MID
+│   │   ├── lyrics.txt
+│   │   └── metadata.json
+│   ├── bold-riley
+│   │   ├── BOLDRILY.MID
+│   │   ├── lyrics.txt
+│   │   └── metadata.json
+│   ├── boney-was-a-warrior
+│   │   ├── BONEYNAP.MID
+│   │   ├── lyrics.txt
+│   │   └── metadata.json
+│   ├── boston
+│   │   ├── BSTNHRBR.MID
+│   │   ├── lyrics.txt
+│   │   └── metadata.json
+│   ├── bound-down-to-newfoundland
+│   │   ├── BNDNEWF2.MID
+│   │   ├── lyrics.txt
+│   │   └── metadata.json
+│   ├── bring-em-down
+│   │   ├── BRNGMDWN.MID
+│   │   ├── lyrics.txt
+│   │   └── metadata.json
+│   ├── canso-strait
+│   │   ├── CNSOSTRT.MID
+│   │   ├── lyrics.txt
+│   │   └── metadata.json
+│   ├── cant-they-dance-the-polka
+│   │   ├── NYGIRLS.MID
+│   │   ├── lyrics.txt
+│   │   └── metadata.json
+│   ├── cawsand-bay
+│   │   ├── CAWSAND.MID
+│   │   ├── lyrics.txt
+│   │   └── metadata.json
+│   ├── chicken-on-a-raft
+│   │   ├── CHCKNRFT.MID
+│   │   ├── lyrics.txt
+│   │   └── metadata.json
+│   ├── clear-the-track
+│   │   ├── BULGNE.MID
+│   │   ├── lyrics.txt
+│   │   └── metadata.json
+│   ├── dance-t-th-daddy
+│   │   ├── DANCEDAD.MID
+│   │   ├── lyrics.txt
+│   │   └── metadata.json
+│   ├── derby-ram
+│   │   ├── DERBYRM2.MID
+│   │   ├── lyrics.txt
+│   │   └── metadata.json
+│   ├── do-me-anna
+│   │   ├── DUMIAMA.MID
+│   │   ├── lyrics.txt
+│   │   └── metadata.json
+│   ├── farewell-to-tarwathie
+│   │   ├── TARWATHI.MID
+│   │   ├── lyrics.txt
+│   │   └── metadata.json
+│   ├── fire-down-below
+│   │   ├── FIREBELO.MID
+│   │   ├── lyrics.txt
+│   │   └── metadata.json
+│   ├── flash-gals-of-the-town
+│   │   ├── FLASHGAL.MID
+│   │   ├── lyrics.txt
+│   │   └── metadata.json
+│   ├── greenland-bound
+│   │   ├── Greenland_Bound.mid
+│   │   ├── lyrics.txt
+│   │   └── metadata.json
+│   ├── handsome-cabin-boy
+│   │   ├── CABINBOY.MID
+│   │   ├── lyrics.txt
+│   │   └── metadata.json
+│   ├── hanging-johnny
+│   │   ├── lyrics.txt
+│   │   └── metadata.json
+│   ├── haul-away-joe
+│   │   ├── HAULROSY.MID
+│   │   ├── lyrics.txt
+│   │   └── metadata.json
+│   ├── haul-on-the-bowline
+│   │   ├── HAULBWLN.MID
+│   │   ├── lyrics.txt
+│   │   └── metadata.json
+│   ├── heart-of-oak
+│   │   ├── HEARTOAK.MID
+│   │   ├── lyrics.txt
+│   │   └── metadata.json
+│   ├── high-barbary
+│   │   ├── HIGHBRB3.MID
+│   │   ├── lyrics.txt
+│   │   └── metadata.json
+│   ├── homeward-bound-outward-bound
+│   │   ├── OUTHOME.MID
+│   │   ├── lyrics.txt
+│   │   └── metadata.json
+│   ├── jack-tar
+│   │   ├── JACKTAR1.MID
+│   │   ├── lyrics.txt
+│   │   └── metadata.json
+│   ├── john-cherokee
+│   │   ├── lyrics.txt
+│   │   └── metadata.json
+│   ├── jolly-roving-tar
+│   │   ├── JOLROVTR.MID
+│   │   ├── lyrics.txt
+│   │   └── metadata.json
+│   ├── juley
+│   │   ├── JULEY.MID
+│   │   ├── lyrics.txt
+│   │   └── metadata.json
+│   ├── le-trente-et-un-du-mois-daoût
+│   │   ├── lyrics.txt
+│   │   └── metadata.json
+│   ├── leave-her-johnny-time-for-us-to-leave-her
+│   │   ├── LEAVEHER.MID
+│   │   ├── lyrics.txt
+│   │   └── metadata.json
+│   ├── liberty-for-the-sailors
+│   │   ├── LIBSAILR.MID
+│   │   ├── lyrics.txt
+│   │   └── metadata.json
+│   ├── liza-lee
+│   │   ├── LIZALEE.MID
+│   │   ├── lyrics.txt
+│   │   └── metadata.json
+│   ├── mingulay-boat-song
+│   │   ├── MINGULY.MID
+│   │   ├── lyrics.txt
+│   │   └── metadata.json
+│   ├── northwest-passage
+│   │   ├── lyrics.txt
+│   │   ├── metadata.json
+│   │   └── nwpass.mid
+│   ├── old-fid
+│   │   ├── lyrics.txt
+│   │   ├── metadata.json
+│   │   └── oldfid.mid
+│   ├── one-more-day
+│   │   ├── ONEMRDAY.MID
+│   │   ├── lyrics.txt
+│   │   └── metadata.json
+│   ├── paddy-doyle
+│   │   ├── PADDOYLE.MID
+│   │   ├── lyrics.txt
+│   │   └── metadata.json
+│   ├── paddy-west
+│   │   ├── PADWEST.MID
+│   │   ├── lyrics.txt
+│   │   └── metadata.json
+│   ├── paul-jones
+│   │   ├── ASHLAND3.MID
+│   │   ├── lyrics.txt
+│   │   └── metadata.json
+│   ├── red-iron-ore
+│   │   ├── DERRYDWN.MID
+│   │   ├── lyrics.txt
+│   │   └── metadata.json
+│   ├── roll-the-cotton-down
+│   │   ├── ROLLCTTN.MID
+│   │   ├── lyrics.txt
+│   │   └── metadata.json
+│   ├── rolling-down-to-old-maui
+│   │   ├── MAUI1.MID
+│   │   ├── lyrics.txt
+│   │   └── metadata.json
+│   ├── rolling-home
+│   │   ├── ROLLHOM3.MID
+│   │   ├── lyrics.txt
+│   │   └── metadata.json
+│   ├── row-bullies-row
+│   │   ├── LIVJUDY.MID
+│   │   ├── lyrics.txt
+│   │   └── metadata.json
+│   ├── sally-brown
+│   │   ├── SALBROWN.MID
+│   │   ├── lyrics.txt
+│   │   └── metadata.json
+│   ├── sing-sally-o
+│   │   ├── SNGSALLY.MID
+│   │   ├── lyrics.txt
+│   │   └── metadata.json
+│   ├── spanish-ladies
+│   │   ├── SPANLAD2.MID
+│   │   ├── lyrics.txt
+│   │   └── metadata.json
+│   ├── strike-the-bell
+│   │   ├── CLKSHEAR.MID
+│   │   ├── lyrics.txt
+│   │   └── metadata.json
+│   ├── ten-thousand-miles-away
+│   │   ├── THOUSMI.MID
+│   │   ├── lyrics.txt
+│   │   └── metadata.json
+│   ├── the-alabama
+│   │   ├── ROLLALAB.MID
+│   │   ├── lyrics.txt
+│   │   └── metadata.json
+│   ├── the-banks-of-the-nile
+│   │   ├── BANKNIL3.MID
+│   │   ├── lyrics.txt
+│   │   └── metadata.json
+│   ├── the-bold-princess-royal
+│   │   ├── PRNCRYL.MID
+│   │   ├── lyrics.txt
+│   │   └── metadata.json
+│   ├── the-bully-boat
+│   │   ├── RANZORAY.MID
+│   │   ├── lyrics.txt
+│   │   └── metadata.json
+│   ├── the-coast-of-peru
+│   │   ├── CSTPERU.MID
+│   │   ├── lyrics.txt
+│   │   └── metadata.json
+│   ├── the-constitution-and-guerrière
+│   │   ├── LNDLDYFR.MID
+│   │   ├── lyrics.txt
+│   │   └── metadata.json
+│   ├── the-cruel-ships-captain
+│   │   ├── Cruel_Ships_Captain1.mid
+│   │   ├── lyrics.txt
+│   │   └── metadata.json
+│   ├── the-cruise-of-the-bigler
+│   │   ├── BIGLRCRW.MID
+│   │   ├── lyrics.txt
+│   │   └── metadata.json
+│   ├── the-first-of-the-emigrants
+│   │   ├── FRSTEMIG.MID
+│   │   ├── lyrics.txt
+│   │   └── metadata.json
+│   ├── the-ghostly-crew
+│   │   ├── GHOSCREW.MID
+│   │   ├── lyrics.txt
+│   │   └── metadata.json
+│   ├── the-girls-around-cape-horn
+│   │   ├── RNDHORN.MID
+│   │   ├── lyrics.txt
+│   │   └── metadata.json
+│   ├── the-greenland-whale-fisheries
+│   │   ├── GRNFISH.MID
+│   │   ├── lyrics.txt
+│   │   └── metadata.json
+│   ├── the-jamestown-homeward-bound
+│   │   ├── JAMETOWN.MID
+│   │   ├── lyrics.txt
+│   │   └── metadata.json
+│   ├── the-keel-row
+│   │   ├── KEELROW.MID
+│   │   ├── lyrics.txt
+│   │   └── metadata.json
+│   ├── the-leaving-of-liverpool
+│   │   ├── LEAVLIV.MID
+│   │   ├── lyrics.txt
+│   │   └── metadata.json
+│   ├── the-mermaid
+│   │   ├── MERMDFRI.MID
+│   │   ├── lyrics.txt
+│   │   └── metadata.json
+│   ├── the-ocean-burial
+│   │   ├── lyrics.txt
+│   │   └── metadata.json
+│   ├── the-sailor-boy
+│   │   ├── FTHFULSL.MID
+│   │   ├── lyrics.txt
+│   │   └── metadata.json
+│   ├── the-sailor-cut-down-in-his-prime
+│   │   ├── lyrics.txt
+│   │   └── metadata.json
+│   ├── the-ship-in-distress
+│   │   ├── SHPDSTRS.MID
+│   │   ├── lyrics.txt
+│   │   └── metadata.json
+│   ├── the-ways-of-man
+│   │   ├── WAYSMAN.MID
+│   │   ├── lyrics.txt
+│   │   └── metadata.json
+│   ├── three-score-and-ten
+│   │   ├── THRSCORE.MID
+│   │   ├── lyrics.txt
+│   │   └── metadata.json
+│   ├── tommys-gone-to-hilo
+│   │   ├── TOMMYHLO.MID
+│   │   ├── lyrics.txt
+│   │   └── metadata.json
+│   ├── well-roll-the-golden-chariot-along-roll-the-old-chariot
+│   │   ├── ROLLCHAR.MID
+│   │   ├── lyrics.txt
+│   │   └── metadata.json
+│   ├── where-am-i-to-go-me-johnnies
+│   │   ├── WHEREIGO.MID
+│   │   ├── lyrics.txt
+│   │   └── metadata.json
+│   ├── while-cruising-around-yarmouth
+│   │   ├── LOGIBUCH.MID
+│   │   ├── lyrics.txt
+│   │   └── metadata.json
+│   ├── whiskey-johnny
+│   │   ├── WHSKJHN.MID
+│   │   ├── lyrics.txt
+│   │   └── metadata.json
+│   └── ye-parliament-of-england
+│       ├── PARLENG.MID
+│       ├── lyrics.txt
+│       └── metadata.json
+└── shanty_book
+    ├── 20774-cover.png
+    ├── images
+    │   ├── 01abilly.png
+    │   ├── 01bbilly.png
+    │   ├── 01billycopyright.png
+    │   ├── 02ario.png
+    │   ├── 02brio.png
+    │   ├── 03agoodbye.png
+    │   ├── 03bgoodbye.png
+    │   ├── 04ajohnny.png
+    │   ├── 04bjohnny.png
+    │   ├── 05aclear.png
+    │   ├── 05bclear.png
+    │   ├── 06alowlands.png
+    │   ├── 06blowlands.png
+    │   ├── 06clowlands.png
+    │   ├── 06dlowlands.png
+    │   ├── 07asally.png
+    │   ├── 07bsally.png
+    │   ├── 08asanty.png
+    │   ├── 08bsanty.png
+    │   ├── 09ashenandoah.png
+    │   ├── 09bshenandoah.png
+    │   ├── 10astormalong.png
+    │   ├── 10bstormalong.png
+    │   ├── 11ahogseye.png
+    │   ├── 11bhogseye.png
+    │   ├── 12agoose.png
+    │   ├── 12bgoose.png
+    │   ├── 13abound.png
+    │   ├── 13bbound.png
+    │   ├── 14adrunken.png
+    │   ├── 14bdrunken.png
+    │   ├── 15ablow.png
+    │   ├── 15bblow.png
+    │   ├── 16ablowtheman.png
+    │   ├── 16bblowtheman.png
+    │   ├── 17acheerly.png
+    │   ├── 17bcheerly.png
+    │   ├── 18amorning.png
+    │   ├── 18bmorning.png
+    │   ├── 19ahanging.png
+    │   ├── 19bhanging.png
+    │   ├── 20ahilo.png
+    │   ├── 20bhilo.png
+    │   ├── 21arun.png
+    │   ├── 21brun.png
+    │   ├── 22areuben.png
+    │   ├── 22breuben.png
+    │   ├── 23adead.png
+    │   ├── 23bdead.png
+    │   ├── 24atom.png
+    │   ├── 24btom.png
+    │   ├── 25awhisky.png
+    │   ├── 25bwhisky.png
+    │   ├── 26boney.png
+    │   ├── 26boneyfn.png
+    │   ├── 27johnny.png
+    │   ├── 28ahaul.png
+    │   ├── 28bhaul.png
+    │   ├── 29haul.png
+    │   ├── 29haulfn.png
+    │   ├── 30paddy.png
+    │   ├── accent.png
+    │   ├── ad.png
+    │   ├── dot.png
+    │   ├── eighth.png
+    │   ├── line.png
+    │   ├── music01.png
+    │   ├── music02.png
+    │   ├── music03.png
+    │   ├── music04.png
+    │   ├── music05.png
+    │   ├── music06.png
+    │   ├── music07.png
+    │   ├── music08.png
+    │   ├── music09.png
+    │   ├── music10.png
+    │   ├── quarter.png
+    │   └── sixteenth.png
+    ├── music
+    │   ├── 01billy.midi
+    │   ├── 02rio.midi
+    │   ├── 03goodbye.midi
+    │   ├── 04johnny.midi
+    │   ├── 05clear.midi
+    │   ├── 06lowlands.midi
+    │   ├── 07sally.midi
+    │   ├── 08santy.midi
+    │   ├── 09shenandoah.midi
+    │   ├── 10stormalong.midi
+    │   ├── 11hogseye.midi
+    │   ├── 12goose.midi
+    │   ├── 13bound.midi
+    │   ├── 14drunken.midi
+    │   ├── 15blow.midi
+    │   ├── 16blowtheman.midi
+    │   ├── 17cheerly.midi
+    │   ├── 18morning.midi
+    │   ├── 19hanging.midi
+    │   ├── 20hilo.midi
+    │   ├── 21run.midi
+    │   ├── 22reuben.midi
+    │   ├── 23dead.midi
+    │   ├── 24tom.midi
+    │   ├── 25whisky.midi
+    │   ├── 26boney.midi
+    │   ├── 27johnny.midi
+    │   ├── 28haul.midi
+    │   ├── 29haul.midi
+    │   ├── 30paddy.midi
+    │   ├── music01.midi
+    │   ├── music02.midi
+    │   ├── music03.midi
+    │   ├── music04.midi
+    │   ├── music05.midi
+    │   ├── music06.midi
+    │   ├── music07.midi
+    │   ├── music08.midi
+    │   ├── music09.midi
+    │   └── music10.midi
+    └── pg20774-images.html
+
+93 directories, 378 files

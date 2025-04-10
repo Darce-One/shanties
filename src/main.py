@@ -138,8 +138,14 @@ def parse_html_for_shanty_types(html_file):
         
         # Check if this is a shanty type heading
         if any(keyword in text.lower() for keyword in ['shanties', 'shanty']):
-            # Clean up the type name
+            # Clean up the type name - remove "SHANTIES", "SHANTY", "&" and ":" and trim
             current_type = text.replace(':', '').strip()
+            current_type = re.sub(r'(?i)SHANTIES|SHANTY', '', current_type).strip()
+            current_type = re.sub(r'\s*&\s*', ' ', current_type).strip()
+            
+            # Remove any trailing or leading whitespace or punctuation
+            current_type = current_type.strip('., ')
+            
             logging.info(f"Found shanty type: {current_type}")
             
             # Get the table that follows this heading
@@ -284,10 +290,30 @@ def save_to_csv(analysis_results, output_path):
                 "shanty_type": result.get("shanty_type", "Unknown"),
                 "shanty_number": result.get("shanty_number", "N/A")
             }
+            # Add the features to the row
             row.update(result["features"])
             writer.writerow(row)
     
     print(f"CSV data saved to {output_path} with {len(all_feature_names)} features from {successful_analyses} files")
+
+
+def convert_to_snake_case(name):
+    """
+    Convert a CamelCase string to snake_case and remove 'Extractor' suffix.
+    
+    Args:
+        name (str): The name to convert
+        
+    Returns:
+        str: The converted name
+    """
+    # Remove 'Extractor' suffix if present
+    if name.endswith('Extractor'):
+        name = name[:-9]  # Remove 'Extractor'
+    
+    # Convert CamelCase to snake_case
+    s1 = re.sub('(.)([A-Z][a-z]+)', r'\1_\2', name)
+    return re.sub('([a-z0-9])([A-Z])', r'\1_\2', s1).lower()
 
 
 def main():
@@ -367,13 +393,21 @@ def main():
             'shanty_number': 'N/A'
         })
         
+        # Convert feature names to snake_case and remove 'Extractor' suffix
+        converted_features = None
+        if features:
+            converted_features = {
+                convert_to_snake_case(name): value 
+                for name, value in features.items()
+            }
+        
         result = {
             "filename": filename,
             "directory": rel_dir,
             "shanty_name": shanty_info['shanty_name'],
             "shanty_type": shanty_info['shanty_type'],
             "shanty_number": shanty_info['shanty_number'],
-            "features": features
+            "features": converted_features
         }
         
         all_results.append(result)
@@ -384,8 +418,9 @@ def main():
 
         # # Still print for console feedback
         # print("Extracted Features:")
-        # for feature_name, value in features.items():
-        #     print(f"{feature_name}: {value}")
+        # if converted_features:
+        #     for feature_name, value in converted_features.items():
+        #         print(f"{feature_name}: {value}")
         # print(f"Shanty Type: {shanty_info['shanty_type']}")
         # print(f"Shanty Name: {shanty_info['shanty_name']}")
         # print("\n")

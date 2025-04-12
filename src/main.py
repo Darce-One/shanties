@@ -50,7 +50,7 @@ def find_midi_files(dataset_dir):
     midi_files = []
     for root, _, files in os.walk(dataset_dir):
         for fname in files:
-            if fname.lower().endswith((".mid", ".midi")):
+            if fname.lower().endswith((".mid", ".midi", "musicxml")):
                 midi_files.append(os.path.join(root, fname))
     return midi_files
 

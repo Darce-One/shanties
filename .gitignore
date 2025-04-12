@@ -1,4 +1,4 @@
-all_songs/
-shanty_book/
+# all_songs/
+# shanty_book/
 .DS_Store/
 __pycache__/

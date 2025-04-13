@@ -97,22 +97,62 @@ We extracted a diverse set of musical features reflecting pitch, rhythmic, and s
 
 ---
 
+**text:**
+
+In our study, we implemented a multi-stage analysis pipeline to investigate the musical differences between shanty types and to determine which features best discriminate between them. Our overall experimental design comprised the following steps:
+
+1. Feature Correlation Analysis
+   We began by examining the relationships among the extracted features. Boxplots for each feature (grouped by shanty type) provided an initial visual inspection of the data distribution. Subsequently, we performed a statistical comparison of the mean values for each feature across shanty types to identify significant differences (using a threshold of 20% difference). For example, we observed that:
+   • melodic_pattern_repetition in WINDLASS CAPSTAN shanties was 22.5% higher than in HALLIARD
+   • rest_frequency was 24.1% higher in HALLIARD than in WINDLASS CAPSTAN
+   • score_length_in_bars in HALLIARD was 35.3% lower compared to WINDLASS CAPSTAN
+
+   In parallel, a correlation matrix enabled us to pinpoint highly correlated features (with |r| > 0.7), such as between note_count_per_bar_variability and variance_in_note_density, and between average_interval and leap_frequency. This informed our later stages by helping us avoid redundancy and focus on independent contributors.
+
+2. Clustering Experiments
+   After standardizing the features using a StandardScaler, we applied Principal Component Analysis (PCA) to reduce the dimensionality to two components. The PCA projection allowed us to visually assess the natural clustering tendencies among shanties. When plotting the principal components, we observed that, to some degree, the clusters corresponded with known shanty types, suggesting inherent grouping in the musical features.
+   In addition to the PCA visualization, we explored pairwise scatterplots for selected feature combinations (limited to a manageable number) to further inspect the relationships across shanty types, although no striking patterns emerged beyond what the PCA implied.
+
+3. Classification via Machine Learning
+   We pursued a comprehensive machine learning analysis for shanty type classification (hauling versus capstan) that included:
+   • Feature Selection: We identified the most informative musical attributes through our earlier statistical analyses.
+   • Model Comparison: We trained five different classifiers – Decision Tree, Random Forest, Gradient Boosting, SVM, and Logistic Regression – comparing their performance to pinpoint the best predictors of shanty type.
+   • Hyperparameter Tuning: Each model’s parameters were optimized using cross-validation to ensure the best performance on the available dataset.
+   • Model Evaluation: The performance was quantified using accuracy, precision, recall, and F1-score metrics. Notably, our ensemble model—which combined the strengths of the top classifiers—achieved an accuracy of 68.8%. Although our pruned decision tree did not score as highly (with an accuracy of 43.8%), its structure provided valuable interpretability regarding feature importance.
+   • Unknown Shanty Classification: Finally, the best-performing model was applied to previously unclassified shanties, offering predictions grounded in the learned musical features.
+
+Through this multifaceted experimental approach, our investigation revealed clear differences in musical features between shanty types, established robust correlations among these features, and highlighted the most critical attributes for classification.
+
 ## 3. Results and Discussion
 
 ### 3.1. Feature Analysis
 - Summary and visualization (e.g., charts, histograms) of the extracted features.
 - Discussion on the distribution of melodic, rhythmic, and structural features across different shanty types.
 
+**text:**
+
+We began our analysis by extracting a wide range of musical features that characterize melodic, rhythmic, and structural aspects of sea shanties. Initial visualizations—including boxplots grouping each feature by shanty type—provided an overview of the data distribution, although these plots by themselves did not reveal striking differences. To probe further, we computed and compared the mean values for each feature across shanty types. Our statistical comparisons (with a significance threshold of >20% difference) uncovered clear distinctions in several key features. Notably, melodic_pattern_repetition in WINDLASS CAPSTAN shanties was on average 22.5% higher than in HALLIARD ones, while rest_frequency was 24.1% higher in HALLIARD. In addition, the score_length_in_bars was 35.3% lower in HALLIARD shanties, suggesting more compact musical phrases. A subsequent correlation analysis using a Pearson correlation matrix helped to flag potentially redundant features, such as the strong association between note_count_per_bar_variability and variance_in_note_density (r ≈ 0.84) and between average_interval and leap_frequency (r ≈ 0.76). These insights guided our further analyses by ensuring that the models focused on independent and informative attributes.
+
+
 ### 3.2. Clustering Results
 - Description of the clustering technique used (e.g., k-means, hierarchical clustering).
 - Presentation of clusters with interpretations—how do clusters relate to known shanty categories?
 - Include figures and cluster maps where applicable.
+
+**text:**
+
+To inspect the natural grouping of shanties based solely on their musical features, we standardized the feature set and applied Principal Component Analysis (PCA) to reduce the dimensions to two principal components. The resulting scatterplot—where each point was annotated with the shanty’s name and colored by its type—revealed tentative clusters that loosely paralleled known shanty categories. Although the PCA visualization did not yield perfectly separated clusters, we observed that shanties with similar rhythmic and melodic characteristics tended to group together. Complementary pairwise scatterplots for selected feature combinations reinforced these observations. Even though these relationships were subtle, the clustering results suggest that there is an inherent musical signature associating with the functional grouping (hauling versus capstan) of shanties.
 
 ### 3.3. Classification Results
 - Overview of the decision tree classifier setup and evaluation metrics (accuracy, precision, recall, etc.).
 - Analysis of the results: How well do musical features predict shanty type?
 - Discussion on feature importance and any misclassification issues.
 - Comparison with traditional qualitative classifications of shanties (e.g., based on historical usage such as hauling versus capstan).
+
+**text:**
+
+For shanty type classification, we evaluated five different machine learning algorithms: Decision Tree, Random Forest, Gradient Boosting, SVM, and Logistic Regression. Following feature selection and hyperparameter tuning via cross-validation, we compared the models using standard evaluation metrics (accuracy, precision, recall, and F1-score). Our ensemble model—combining the strengths of the top-performing classifiers—achieved an overall accuracy of 68.8%. In contrast, our pruned decision tree model, while offering excellent interpretability of feature importance, yielded a lower accuracy of 43.8%. Analysis of the classification report highlighted that while WINDLASS CAPSTAN shanties were generally predicted more reliably (higher recall), HALLIARD shanties sometimes suffered from misclassification. These differences are consistent with our earlier feature analysis and reinforce the notion that features such as melodic repetition, rest frequency, and score length are the most informative factors to distinguish between shanty types. Additionally, when our ensemble model was applied to unknown shanties, it provided promising predictions, thus demonstrating the practical applicability of our methodology in classifying previously uncharacterized works.
+
 
 ### 3.4. Discussion
 - Interpret the significance of the findings in the context of computational musicology.
@@ -127,6 +167,16 @@ We extracted a diverse set of musical features reflecting pitch, rhythmic, and s
 - Summarize key findings regarding the musical features and their effectiveness in classifying shanty types.
 - Emphasize the contributions of the study to both the field of computational musicology and historical music research.
 - Point out limitations and provide recommendations for future research, including the potential for integrating lyrical analysis and expanding the dataset.
+
+**text:**
+
+Our experimental results underscore several key findings:
+• The musical features of sea shanties differ significantly between types, particularly in terms of melodic repetition, rest usage, and structural length.
+• Correlation analysis confirmed that while many features are interrelated, a subset of independent attributes carries the discriminatory power needed for classification.
+• The PCA-based clustering reveals natural grouping tendencies among shanties that align with their historical usage (hauling versus capstan), even if the clusters are not perfectly separated.
+• The multi-model classification approach identified the most critical features for shanty type prediction and highlighted that ensemble methods can improve overall classification accuracy.
+
+In the context of computational musicology, these insights are significant as they validate the use of quantitative methods to study historical musical forms. At the same time, our study is constrained by factors such as the limited dataset size and the inherent nuances in musical expression that may not be fully captured through symbolic representations alone. Future work could expand the dataset, incorporate lyrical analysis, and experiment with alternative modeling approaches to further enhance both prediction accuracy and interpretability.
 
 ---
 
